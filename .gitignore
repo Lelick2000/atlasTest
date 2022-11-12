@@ -34,3 +34,4 @@ HELP.md
 ### Allure report ###
 /allure-results
 *.log
+/.idea/

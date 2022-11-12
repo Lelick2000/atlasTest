@@ -19,6 +19,7 @@ HELP.md
 *.iws
 *.iml
 *.ipr
+/.idea/
 
 ### NetBeans ###
 /nbproject/private/
@@ -34,4 +35,4 @@ HELP.md
 ### Allure report ###
 /allure-results
 *.log
-/.idea/
+

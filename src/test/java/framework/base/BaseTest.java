@@ -4,9 +4,8 @@ import com.codeborne.selenide.Selenide;
 import framework.driver.DriverContainer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import project.constants.enums.urls.Urls;
 import project.utils.BrowserUtils;
 
@@ -23,7 +22,7 @@ public abstract class BaseTest {
      * Before Class method
      * Make a browser window
      */
-    @BeforeMethod
+    @BeforeEach
     public void before() {
         openBrowserAndExecuteBasicActions();
     }
@@ -38,10 +37,9 @@ public abstract class BaseTest {
     /**
      * Close browser
      */
-    @AfterMethod(alwaysRun = true)
-    public void afterMethod(ITestResult result) {
-        /*DriverContainer.quit();*/
+    @AfterEach
+    public void afterMethod() {
+        DriverContainer.quit();
     }
-
 }
 

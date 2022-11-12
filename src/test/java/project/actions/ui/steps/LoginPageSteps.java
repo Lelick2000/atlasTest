@@ -5,7 +5,7 @@ import project.models.User;
 import project.page.objects.LoginPage;
 
 public class LoginPageSteps {
-    private final LoginPage loginPage = new LoginPage();
+    LoginPage loginPage = new LoginPage();
 
     @Step("Login existing user ")
     public void loginUser(User user) {

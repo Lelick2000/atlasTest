@@ -2,10 +2,11 @@ package project.page.objects;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CardPage {
     private final SelenideElement shoppingCartCount = $(".shopping_cart_badge");
@@ -18,8 +19,8 @@ public class CardPage {
 
     public void addItemToShoppingCart() {
         addToCartButton.shouldBe(Condition.visible).click();
-        Assert.assertTrue(removeFromCartButton.exists(), "No remove button");
-        Assert.assertEquals(removeFromCartButton.text(), "REMOVE");
-        Assert.assertTrue(checkShoppingCart() > 0, "No items in the cart");
+        assertTrue(removeFromCartButton.exists(), "No remove button");
+        assertEquals(removeFromCartButton.text(), "REMOVE");
+        assertTrue(checkShoppingCart() > 0, "No items in the cart");
     }
 }

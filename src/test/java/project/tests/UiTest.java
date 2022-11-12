@@ -1,30 +1,24 @@
 package project.tests;
 
 import framework.base.BaseTest;
+import net.serenitybdd.junit5.SerenityJUnit5Extension;
 import net.thucydides.core.annotations.Steps;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import project.actions.ui.steps.CardPageSteps;
 import project.actions.ui.steps.InventoryPageSteps;
 import project.actions.ui.steps.LoginPageSteps;
 import project.models.User;
 
+@ExtendWith(SerenityJUnit5Extension.class)
 public class UiTest extends BaseTest {
-    private final User user = new User();
+    private final User user = new User("standard_user", "secret_sauce");
     @Steps
-    private final LoginPageSteps loginPageSteps = new LoginPageSteps();
+    LoginPageSteps loginPageSteps;
     @Steps
-    private final InventoryPageSteps inventoryPageSteps = new InventoryPageSteps();
+    InventoryPageSteps inventoryPageSteps;
     @Steps
-    private final CardPageSteps cardPageSteps = new CardPageSteps();
-
-    @BeforeClass
-    @Parameters({"username", "password"})
-    public void readParams(String username, String password) {
-        this.user.setUsername(username);
-        this.user.setPassword(password);
-    }
+    CardPageSteps cardPageSteps;
 
     @Override
     @Test
@@ -35,7 +29,7 @@ public class UiTest extends BaseTest {
         logger.info("step 2: Setting sorting from z to a");
         inventoryPageSteps.setZaSort();
 
-        logger.info("step 3: open lef buttom card");
+        logger.info("step 3: open lef bottom card");
         inventoryPageSteps.openLeftButtomElement();
 
         logger.info("step 4: check that shopping cart is empty");

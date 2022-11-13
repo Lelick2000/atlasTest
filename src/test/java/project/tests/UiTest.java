@@ -10,9 +10,12 @@ import project.actions.ui.steps.InventoryPageSteps;
 import project.actions.ui.steps.LoginPageSteps;
 import project.models.User;
 
+import static confuguration.YamlPropertiesReader.getUserPassword;
+import static confuguration.YamlPropertiesReader.getUserUsername;
+
 @ExtendWith(SerenityJUnit5Extension.class)
 public class UiTest extends BaseTest {
-    private final User user = new User("standard_user", "secret_sauce");
+    private final User user = new User(getUserUsername(), getUserPassword());
     @Steps
     LoginPageSteps loginPageSteps;
     @Steps

@@ -1,2 +1,7 @@
 common:
   apiBaseUri: https://reqres.in/api
+  uiBaseUri: https://www.saucedemo.com/
+
+user:
+  username: standard_user
+  password: secret_sauce

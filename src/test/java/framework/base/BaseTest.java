@@ -6,8 +6,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import project.constants.enums.urls.Urls;
 import project.utils.BrowserUtils;
+
+import static confuguration.YamlPropertiesReader.getUiBaseUri;
 
 
 public abstract class BaseTest {
@@ -30,8 +31,8 @@ public abstract class BaseTest {
     protected void openBrowserAndExecuteBasicActions() {
         DriverContainer.setDrivers();
         Selenide.clearBrowserCookies();
-        Selenide.open(Urls.BASE_UI.getUrl());
-        BrowserUtils.waitForUrlEqual(Urls.BASE_UI.getUrl());
+        Selenide.open(getUiBaseUri());
+        BrowserUtils.waitForUrlEqual(getUiBaseUri());
     }
 
     /**

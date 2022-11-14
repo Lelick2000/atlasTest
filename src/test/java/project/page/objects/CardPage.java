@@ -20,7 +20,13 @@ public class CardPage {
     public void addItemToShoppingCart() {
         addToCartButton.shouldBe(Condition.visible).click();
         assertTrue(removeFromCartButton.exists(), "No remove button");
+    }
+
+    public void checkThatButtonTextChanged() {
         assertEquals(removeFromCartButton.text(), "REMOVE");
+    }
+
+    public void checkThanBasketNotEmpty() {
         assertTrue(checkShoppingCart() > 0, "No items in the cart");
     }
 }

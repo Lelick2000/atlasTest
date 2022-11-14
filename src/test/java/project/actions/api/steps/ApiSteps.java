@@ -14,19 +14,25 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ApiSteps {
     private final ApiService apiService = new ApiService();
 
-    @Step("Get users with page param")
-    public void getUsersWithPage(Integer page, String name) {
-        JsonPath responseBody = apiService.getUsersPage(page);
-        assertEquals(page, responseBody.get("page"));
+    @Step("Get users with page param= {0}")
+    public JsonPath getUsersWithPage(Integer page) {
+        return apiService.getUsersPage(page);
+    }
 
+    @Step("Check that page param = {0}")
+    public void checkPageParam(Integer page, JsonPath responseBody) {
+        assertEquals(page, responseBody.get("page"));
+    }
+
+    @Step("Check response name= {0}")
+    public void checkResponseContainsName(String name, JsonPath responseBody) {
         List<ApiUser> responseUsersList = responseBody.getList("data", ApiUser.class);
         assertTrue(responseUsersList.stream().anyMatch(el -> el.getFirstName().equals(name)), "No such name");
     }
 
     @Step("Post user with body params")
-    public void postUser(UserJob userJob) {
-        UserJob responseJob = apiService.postUsers(userJob);
-        assertEquals(userJob.getName(), responseJob.getName());
-        assertEquals(userJob.getJob(), responseJob.getJob());
+    public UserJob postUser(UserJob userJob) {
+        return apiService.postUsers(userJob);
+
     }
 }

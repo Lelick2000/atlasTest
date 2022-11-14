@@ -1,8 +1,8 @@
 package project.utils;
 
 import com.codeborne.selenide.Selenide;
-import framework.base.BaseTest;
 import org.openqa.selenium.TimeoutException;
+import project.tests.UiTestRunner;
 
 public class BrowserUtils {
     public static boolean waitForUrlEqual(String url) {
@@ -12,7 +12,7 @@ public class BrowserUtils {
                     .until(driver -> driver.getCurrentUrl().equals(url));
             return true;
         } catch (TimeoutException e) {
-            BaseTest.logger.warn("Превышено время ожидания URL: " + url);
+            UiTestRunner.logger.warn("Превышено время ожидания URL: " + url);
             return false;
         }
     }

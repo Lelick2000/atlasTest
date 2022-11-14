@@ -23,4 +23,9 @@ public class CardPageSteps {
     public void addItemToShoppingCart() {
         cardPage.addItemToShoppingCart();
     }
+
+    @Step("Check that button inside card is changed to REMOVE")
+    public void checkThatAddCartButtonChanged() {
+        cardPage.checkThatButtonTextChanged();
+    }
 }
